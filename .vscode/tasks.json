@@ -33,17 +33,42 @@
             "problemMatcher": "$tsc"
         },
         {
-            "label": "RaspiPublish",
+            "label": "RaspiPublish_Win",
+            "type": "shell",
+            "windows": {
+                "command": "cmd",
+                "args": [
+                    "/c",
+                    "\"dotnet publish -r linux-arm64 -c Debug --no-self-contained\""
+                ],
+                "problemMatcher": []
+            }
+        },
+        {
+            "label": "RaspiDeploy_Win",
+            "type": "shell",
+            "dependsOn": "RaspiPublish_Win",
+            "presentation": {
+                "reveal": "always",
+                "panel": "new",
+                "close": true
+            },
+            "windows": {
+                "command": "scp bin\\Debug\\net8.0\\linux-arm64\\publish\\* pi@172.31.7.17:/home/pi/target/dotnetdebug/"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "RaspiPublish_Linux",
             "command": "dotnet",
             "type": "process",
-            // "dependsOn": "build",
             "args": [ "publish", "-r linux-arm64 -c Debug --no-self-contained" ]
         },
         {
-            "label": "RaspiDeploy",
+            "label": "RaspiDeploy_Linux",
             "command": "scp bin/Debug/net8.0/linux-arm64/publish/* pi@172.31.7.17:/home/pi/target/dotnetdebug/",
             "type": "shell",
-            "dependsOn": "RaspiPublish",
+            "dependsOn": "RaspiPublish_Linux",
         }
     ]
 }

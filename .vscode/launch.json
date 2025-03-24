@@ -9,7 +9,7 @@
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build",
-            "program": "${workspaceFolder}/bin/Debug/netcoreapp2.2/dotnetcoregpio.dll",
+            "program": "${workspaceFolder}/bin/Debug/netcoreapp2.2/dotnetdebug.dll",
             "args": [],
             "cwd": "${workspaceFolder}",
             "console": "internalConsole",
@@ -25,11 +25,11 @@
             "name": ".NET Core Remote Launch - Linux",
             "type": "coreclr",
             "request": "launch",
-            "program": "~/target/dotnetcoregpio/dotnetcoregpio",
+            "program": "~/target/dotnetdebug/dotnetdebug",
             //"args": [
             //    "./gpiotest"
             //],
-            "cwd": "~/target/dotnetcoregpio",
+            "cwd": "~/target/dotnetdebug",
             "stopAtEntry": true,
             "console": "internalConsole",
             "pipeTransport": {
@@ -46,9 +46,9 @@
             "type": "coreclr",
             "request": "launch",
             // "preLaunchTask": "build",
-            "program": "/home/pi/target/dotnetcoregpio/dotnetcoregpio",
+            "program": "/home/pi/target/dotnetdebug/dotnetdebug",
             // "args": ["/home/pi/target/helloworld.dll"],
-            "cwd": "/home/pi/target/dotnetcoregpio",
+            "cwd": "/home/pi/target/dotnetdebug",
             "stopAtEntry": true,
             "console": "internalConsole",
             "pipeTransport": {
@@ -63,23 +63,44 @@
             }
         },
         {
-            "name": ".NET Remote Launch - Framework-dependent",
+            "name": ".NET Remote Launch - Frmwrk-dep - Windows",
             "type": "coreclr",
             "request": "launch",
-            "preLaunchTask": "RaspiDeploy",
+            "preLaunchTask": "RaspiDeploy_Win",
             "program": "~/.dotnet/dotnet",
-            "args": ["/home/pi/dotnetdebug/dotnetdebug.dll"],
+            "args": ["/home/pi/target/dotnetdebug/dotnetdebug.dll"],
+            "cwd": "~/target/dotnetdebug",
+            "stopAtEntry": true,
+            "console": "internalConsole",
+            "pipeTransport": {
+                "pipeCwd": "${workspaceFolder}",
+                "pipeProgram": "c:\\program files\\putty\\PLINK.EXE",
+                "pipeArgs": [
+                    "-pw",
+                    "raspberry",
+                    "pi@172.31.7.17"
+                ],
+                "debuggerPath": "/home/pi/vsdbg/vsdbg"
+            }
+        },
+        {	
+            "name": ".NET Core Remote Launch - Frmwrk-dep - Linux",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "RaspiDeploy_Linux",
+            "program": "~/.dotnet/dotnet",
+            "args": [ "/home/pi/target/dotnetdebug/dotnetdebug.dll" ],
             "cwd": "~/target/dotnetdebug",
             "stopAtEntry": true,
             "console": "internalConsole",
             "pipeTransport": {
                 "pipeCwd": "${workspaceRoot}",
-                "pipeProgram": "ssh",
+                "pipeProgram": "/usr/bin/ssh",
                 "pipeArgs": [
-                    "pi@172.31.7.17"
+                    "-T", "pi@172.31.7.17"
                 ],
                 "debuggerPath": "~/vsdbg/vsdbg"
-            }
-     }
+            }   
+        }
     ]
 }

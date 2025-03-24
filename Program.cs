@@ -47,11 +47,13 @@ namespace gpiotest
                         {
                             controller.Write(pin1, PinValue.Low);
                             controller.Write(pin2, PinValue.High);
+                            Console.WriteLine($"Pin {pin1} Low, Pin {pin2} High");
                         }
                         else
                         {
                             controller.Write(pin1, PinValue.High);
                             controller.Write(pin2, PinValue.Low);
+                            Console.WriteLine($"Pin {pin1} High, Pin {pin2} Low");
                         }
 
                         flag = !flag;

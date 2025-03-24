@@ -22,13 +22,10 @@
             "processId": "${command:pickProcess}"
         },
         {	
-            "name": ".NET Core Remote Launch - Linux",
+            "name": ".NET Remote Launch - Linux",
             "type": "coreclr",
             "request": "launch",
             "program": "~/target/dotnetdebug/dotnetdebug",
-            //"args": [
-            //    "./gpiotest"
-            //],
             "cwd": "~/target/dotnetdebug",
             "stopAtEntry": true,
             "console": "internalConsole",
@@ -42,7 +39,7 @@
             }   
         },
         {
-            "name": ".NET Core Remote Launch - Windows",
+            "name": ".NET Remote Launch - Windows",
             "type": "coreclr",
             "request": "launch",
             // "preLaunchTask": "build",
@@ -57,13 +54,13 @@
                 "pipeArgs": [
                     "-pw",
                     "raspberry",
-                    "pi@172.31.7.17"
+                    "pi@rpi3"
                 ],
                 "debuggerPath": "/home/pi/vsdbg/vsdbg"
             }
         },
         {
-            "name": ".NET Remote Launch - Frmwrk-dep - Windows",
+            "name": ".NET Remote Launch - frmwrk-dep - Windows",
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "RaspiDeploy_Win",
@@ -84,7 +81,7 @@
             }
         },
         {	
-            "name": ".NET Core Remote Launch - Frmwrk-dep - Linux",
+            "name": ".NET Remote Launch - frmwrk-dep - Linux",
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "RaspiDeploy_Linux",

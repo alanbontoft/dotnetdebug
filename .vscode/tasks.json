@@ -1,0 +1,49 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "build",
+                "${workspaceFolder}/dotnetdebug.csproj"
+            ],
+            "problemMatcher": "$tsc"
+        },
+        {
+            "label": "publish",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "publish",
+                "${workspaceFolder}/dotnetdebug.csproj"
+            ],
+            "problemMatcher": "$tsc"
+        },
+        {
+            "label": "watch",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "watch",
+                "run",
+                "${workspaceFolder}/dotnetdebug.csproj"
+            ],
+            "problemMatcher": "$tsc"
+        },
+        {
+            "label": "RaspiPublish",
+            "command": "dotnet",
+            "type": "process",
+            // "dependsOn": "build",
+            "args": [ "publish", "-r linux-arm64 -c Debug --no-self-contained" ]
+        },
+        {
+            "label": "RaspiDeploy",
+            "command": "scp bin/Debug/net8.0/linux-arm64/publish/* pi@172.31.7.17:/home/pi/target/dotnetdebug/",
+            "type": "shell",
+            "dependsOn": "RaspiPublish",
+        }
+    ]
+}

@@ -78,7 +78,7 @@
                 "pipeArgs": [
                     "-pw",
                     "raspberry",
-                    "pi@172.31.7.17"
+                    "pi@rpi3"
                 ],
                 "debuggerPath": "/home/pi/vsdbg/vsdbg"
             }
@@ -97,7 +97,7 @@
                 "pipeCwd": "${workspaceRoot}",
                 "pipeProgram": "/usr/bin/ssh",
                 "pipeArgs": [
-                    "-T", "pi@172.31.7.17"
+                    "-T", "pi@rpi3"
                 ],
                 "debuggerPath": "~/vsdbg/vsdbg"
             }   

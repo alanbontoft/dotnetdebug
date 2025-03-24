@@ -62,11 +62,13 @@
             "label": "RaspiPublish_Linux",
             "command": "dotnet",
             "type": "process",
-            "args": [ "publish", "-r linux-arm64 -c Debug --no-self-contained" ]
+            "args": [ "publish",
+                     "-p:Configuration=Debug",
+                     "--no-self-contained" ]
         },
         {
             "label": "RaspiDeploy_Linux",
-            "command": "scp bin/Debug/net8.0/linux-arm64/publish/* pi@172.31.7.17:/home/pi/target/dotnetdebug/",
+            "command": "scp bin/Debug/net8.0/linux-arm64/publish/* pi@rpi3:/home/pi/target/dotnetdebug/",
             "type": "shell",
             "dependsOn": "RaspiPublish_Linux",
         }
